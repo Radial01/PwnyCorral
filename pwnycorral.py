@@ -11,7 +11,6 @@ db = TinyDB('db.json')
 headers = {'User-Agent': 'PwnageDB'}
 
 def addAccount(accountName, verbose):
-	#accountName = input("Enter compromised account email address:  ")
 	url = "https://haveibeenpwned.com/api/v2/breachedaccount/" + accountName
 	response = requests.get(url, headers=headers)
 
