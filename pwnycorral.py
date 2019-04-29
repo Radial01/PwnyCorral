@@ -1,3 +1,10 @@
+# PwnyCorral takes advantage of the HaveIBeenPwned API to determine if an account is compromised.
+# The primary goal of this application is to allow organizations/companies to track the breaches
+# in which their users have fallen victim.  Identifying accounts which come from one particular
+# source may allow proactive remediation.
+#
+# PwnyCorral's most common flags are -a (add account to DB), -f (add group of accounts to DB), and -g (graph DB to show greatest threat(s)).
+
 from tinydb import TinyDB, Query, where
 from termgraph.termgraph import chart
 import json
@@ -6,7 +13,7 @@ from collections import Counter
 import argparse
 import time
 
-User = Query()
+Pwny = Query()
 db = TinyDB('db.json')
 headers = {'User-Agent': 'PwnageDB'}
 
@@ -112,14 +119,14 @@ def accountList():
 	return;
 
 def accountExists(accountName):
-	if db.search(User.email == accountName):
+	if db.search(Pwny.email == accountName):
 		print("The account " + accountName + " exists in the database")
 	else:
 		print("The account " + accountName + " DOES NOT exist in the database")
 
 def accountDetails(accountName):
 	print("Details for " + accountName + "...")
-	results = db.search(User.email == accountName)
+	results = db.search(Pwny.email == accountName)
 	for item in results:
 		print(item['Name'])
 		print(item['Description'])
