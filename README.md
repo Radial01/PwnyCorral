@@ -1,12 +1,8 @@
 # Pwny Corral
 
-The intention of this script is to allow organizations
-to determine which data breaches, after time, may be 
+This script queries the HaveIBeenPwned.com API to determine if an account has been breached.  
+The intention of this script is to allow organizations to determine which data breaches, after time, may be 
 affecting their security posture.
-
-## Getting Started
-
-
 
 ### Prerequisites
 
