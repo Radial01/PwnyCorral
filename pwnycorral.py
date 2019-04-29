@@ -51,15 +51,7 @@ def totalAccounts():
 	accTotal = 0
 	c = Counter(x['email'] for x in db)
 	print(len(set(c)))
-	#for k, v in c.items():
-		#accTotal = accTotal + v
-	#print("There are a total of " + str(accTotal) + " accounts in the database")
 	return;
-	#c = Counter(x['Name'] for x in db)
-	#print(c)
-	#print(type(db))
-	#type(json_data)
-	#return;
 
 def greatThreat():
 	print("The site that poses the greatest threat is...")
@@ -72,7 +64,6 @@ def greatThreat():
 def graphThreat():
 	breachName_list = []
 	breachCount_list = []
-	#breachNameResults = db.search(User.Name)
 
 	c = Counter(x['Name'] for x in db)
 	for k, v in c.items():
@@ -85,10 +76,8 @@ def graphThreat():
 	return;
 
 def bulkAccounts(compFile):
-	#compFile = input("Enter filename containing compromised accounts:  ")
 	with open(compFile) as f:
 		for line in f:
-			#print(line.strip())
 			accountName = line.strip()
 			url = "https://haveibeenpwned.com/api/v2/breachedaccount/" + accountName
 			response = requests.get(url, headers=headers)
