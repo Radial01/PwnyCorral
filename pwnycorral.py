@@ -4,6 +4,8 @@
 # source may allow proactive remediation.
 #
 # PwnyCorral's most common flags are -a (add account to DB), -f (add group of accounts to DB), and -g (graph DB to show greatest threat(s)).
+#
+# Created by Brad Dial:  https://github.com/Radial01
 
 from tinydb import TinyDB, Query, where
 from termgraph.termgraph import chart
