@@ -20,15 +20,15 @@ Requests
 ### Usage
 
 Add account to database:
-'''
+```
 Input:  python pwnycorral.py -a [email address]
-'''
+```
 
 Remove account from database:
 
-'''
+```
 Input:  python pwnycorral.py -r [email address]
-'''
+```
 
 Display number of accounts in database:
 
