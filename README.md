@@ -11,11 +11,17 @@ affecting their security posture.
 ### Prerequisites
 
 TinyDB
-	pip install tinydb
+```
+pip install tinydb
+```
 Termgraph
-	pip3 install termgraph
+```
+pip3 install termgraph
+```
 Requests
-	pip install requests
+```
+pip install requests
+```
 
 ### Usage
 
