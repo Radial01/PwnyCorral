@@ -53,9 +53,7 @@ def totalAccounts():
 	return;
 
 def greatThreat():
-	print("The site that poses the greatest threat is...")
 	c = Counter(x['Name'] for x in db)
-	print(type(c))
 	for k, v in c.items():
 		print("{} count:  {}".format(k,v))
 	return;
