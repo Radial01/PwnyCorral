@@ -135,10 +135,24 @@ def accountDetails(accountName):
 		print()
 	return;
 
+def breachDetails(breachName):
+	results = db.search(Pwny.Name == breachName)
+	if len(results) > 0:
+		print("Details for " + breachName + "...")
+		breachResult = results[0]
+		print(breachResult['Description'])
+
+	else:
+		print("This breach was not found in the database.  Check the breach name.")
+	#for item in results:
+	#	print(item['Description'])
+	return;
+
 def main():
 
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-a", dest="addAccName", help="ADD account to database.  Support -v flag.")
+	parser.add_argument("-b", dest="breachName", help="View details of particular BREACH.")
 	parser.add_argument("-r", dest="remAccName", help="REMOVE account from database.")
 	parser.add_argument("-c", help="COUNT accounts in database.", action="store_true")
 	parser.add_argument("-s", help="Number of SITES in database.", action="store_true")
@@ -151,6 +165,8 @@ def main():
 	args = parser.parse_args()
 	if (args.addAccName):
 		addAccount(str(args.addAccName), args.v)
+	if (args.breachName):
+		breachDetails(str(args.breachName))
 	if (args.remAccName):
 		removeAccount(str(args.remAccName))
 	if (args.c):
