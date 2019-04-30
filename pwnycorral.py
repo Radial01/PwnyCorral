@@ -51,8 +51,11 @@ def addAccount(accountName, verbose):
 	return;
 
 def removeAccount(accountName):
-	db.remove(where('email') == accountName)
-	print("Email address removed")
+	if db.search(Pwny.email == accountName):
+		db.remove(where('email') == accountName)
+		print("Email address removed.")
+	else:
+		print("The email address was not found in your DB.")
 	return;
 
 def totalAccounts():
@@ -139,13 +142,11 @@ def breachDetails(breachName):
 	results = db.search(Pwny.Name == breachName)
 	if len(results) > 0:
 		print("Details for " + breachName + "...")
-		breachResult = results[0]
+		breachResult = (results[0])
 		print(breachResult['Description'])
 
 	else:
 		print("This breach was not found in the database.  Check the breach name.")
-	#for item in results:
-	#	print(item['Description'])
 	return;
 
 def main():
