@@ -17,7 +17,7 @@ import time
 
 Pwny = Query()
 db = TinyDB('db.json')
-headers = {'User-Agent': 'PwnageDB'}
+headers = {'User-Agent': 'PwnyCorral'}
 
 def addAccount(accountName, verbose):
 	url = "https://haveibeenpwned.com/api/v2/breachedaccount/" + accountName
