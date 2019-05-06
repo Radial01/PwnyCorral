@@ -8,12 +8,12 @@
 # Created by Brad Dial:  https://github.com/Radial01
 
 from tinydb import TinyDB, Query, where
-from termgraph.termgraph import chart
 import json
 import requests
 from collections import Counter
 import argparse
 import time
+from operator import itemgetter
 
 Pwny = Query()
 db = TinyDB('db.json')
@@ -67,21 +67,28 @@ def totalAccounts():
 def greatThreat():
 	c = Counter(x['Name'] for x in db)
 	for k, v in c.items():
-		print("{} count:  {}".format(k,v))
+		print("{},{}".format(k,v))
 	return;
 
 def graphThreat():
-	breachName_list = []
-	breachCount_list = []
+	graphData = []
 
 	c = Counter(x['Name'] for x in db)
 	for k, v in c.items():
-		breachName_list.append(k)
-		breachCount_list.append([v])
+		graphData.append((k,v))
+	sortedList = sorted(graphData, key=itemgetter(1), reverse=True)
 
-	args = {'stacked': False, 'width': 50, 'no_labels': False, 'format': '{:<5.2f}', 'suffix': '', "vertical": False}
-	chart(colors=[], data=breachCount_list, args=args, labels=breachName_list)
+	max_value = max(count for _, count in sortedList)
+	increment = max_value / 25
+	longest_label_length = max(len(label) for label, _ in sortedList)
 
+	for label, count in sortedList:
+		bar_chunks, remainder = divmod(int(count*8/increment),8)
+		bar = '█' * bar_chunks
+		if remainder > 0:
+			bar += chr(ord('█') + (8 - remainder))
+		bar = bar or  '▏'
+		print(f'{label.rjust(longest_label_length)} ▏ {count:#4d} {bar}')
 	return;
 
 def bulkAccounts(compFile):
@@ -119,7 +126,7 @@ def bulkAccounts(compFile):
 def accountList():
 	c = Counter(x['email'] for x in db)
 	for k, v in c.items():
-		print("{} count:  {}".format(k,v))
+		print("{},  {}".format(k,v))
 
 	return;
 
