@@ -12,7 +12,7 @@ Install TermGraph:  Termgraph is used to graph the sites that have been breached
 ```
 pip3 install termgraph
 ```
-Install Requests:  Requests allows the haveibeenpwned.com API request to take place.
+Install Requests:  The Requests allows the haveibeenpwned.com API request to take place.
 
 ```
 pip install requests
