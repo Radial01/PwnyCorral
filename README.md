@@ -3,7 +3,7 @@ Pwny Corral is a Python script that queries the haveibeenpwned.com API in order 
 
 ## Getting Started
 
-Install TinyDB:  TinyDB is used to store the JSON returned from the haveibeenpwned response.  Before strorage, Pwny Corral modifies each JSON response by adding the compromised email address to each response.
+Install TinyDB:  TinyDB is used to store the JSON returned from the haveibeenpwned response.  Before strorage of the JSON, Pwny Corral modifies each JSON response by adding the compromised email address to each response.
 ```
 pip install tinydb
 ```
